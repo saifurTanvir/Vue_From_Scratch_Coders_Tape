@@ -7,13 +7,14 @@
 <body>
 
 <div id="app" >
-    <!-- <h1 v-text="text"></h1> -->
+    <p v-if="hidden"> Item </p>
     <ul>
-        <li v-for="item in items">{{item}}</li>
+        <li v-for="item in items">
+            {{item.text}}
+            <div v-if="item.checked">Checked</div>
+            <button @click="item.checked = !item.checked">Toggle</button>
+        </li>
     </ul>
-
-    <input type="text" v-model="item">
-    <button type="submit" v-on:click="items.push(item)">Add Item</button>
 
 </div>
 
@@ -25,11 +26,14 @@
        el:"#app",
 
        data:{
-           item: "",
-           items: [
-               'Item 1',
-               'Item 2'
-           ]
+          hidden: false,
+
+          items: [
+              {text:"Item 1", checked: true},
+              {text:"Item 2", checked: false},
+              {text:"Item 3", checked: true}
+          ]
+
        }
     });
 </script>
