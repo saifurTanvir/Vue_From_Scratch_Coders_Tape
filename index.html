@@ -7,8 +7,14 @@
 <body>
 
 <div id="app" >
-    <h1 v-text="text" v-bind:title="menu"></h1>
-    <p v-text="content"></p>
+    <!-- <h1 v-text="text"></h1> -->
+    <ul>
+        <li v-for="item in items">{{item}}</li>
+    </ul>
+
+    <input type="text" v-model="item">
+    <button type="submit" v-on:click="items.push(item)">Add Item</button>
+
 </div>
 
 
@@ -19,9 +25,11 @@
        el:"#app",
 
        data:{
-           text: "This is title for this app.",
-           content: "My content for this app",
-           menu: "Menu for this app."
+           item: "",
+           items: [
+               'Item 1',
+               'Item 2'
+           ]
        }
     });
 </script>
