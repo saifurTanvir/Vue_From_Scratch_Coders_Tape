@@ -7,14 +7,9 @@
 <body>
 
 <div id="app" >
-    <p v-if="hidden"> Item </p>
-    <ul>
-        <li v-for="item in items">
-            {{item.text}}
-            <div v-if="item.checked">Checked</div>
-            <button @click="item.checked = !item.checked">Toggle</button>
-        </li>
-    </ul>
+    <input type="number" v-model="price">
+    <p>Tax {{moneyFormated(tax)}}</p>
+    <p>Total {{moneyFormated(total)}}</p>
 
 </div>
 
@@ -25,16 +20,29 @@
     new Vue({
        el:"#app",
 
+
+
        data:{
-          hidden: false,
+          price: 200
+       },
 
-          items: [
-              {text:"Item 1", checked: true},
-              {text:"Item 2", checked: false},
-              {text:"Item 3", checked: true}
-          ]
+        computed: {
+            tax: function(){
+                return this.price * 0.1;
+            },
 
+            total: function(){
+                return this.price + this.tax;
+            }
+
+        },
+
+       methods: {
+           moneyFormated: function(price){
+               return '$'+ price;
+           },
        }
+
     });
 </script>
 
