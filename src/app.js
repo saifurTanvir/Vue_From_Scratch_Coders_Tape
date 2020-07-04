@@ -1,11 +1,14 @@
 import Vue from 'vue';
 import Accordian from "../components/Accordian";
+import List from "../components/List";
 
 new Vue({
     el:"#app",
 
     components: {
-      Accordian
+        List,
+      Accordian,
+
     },
 
     data: {
