@@ -11,46 +11,7 @@
     <accordian v-for="item in items" :text="item"></accordian>
 </div>
 
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script>
-
-    Vue.component('accordian', {
-        props: [
-            'text'
-        ],
-        data: function(){
-          return{
-              toggle: true
-          }
-        },
-        template: `
-            <div>
-                <p>{{text.title}}</p>
-                <button @click="toggle = !toggle">Toggle</button>
-                <p v-if="toggle">{{text.description}}</p>
-            </div>
-
-        `
-    });
-
-    new Vue({
-        el:"#app",
-
-        data: {
-            items: [
-                {title: 'Tittle 1', description: "This is description 1"},
-                {title: 'Tittle 2', description: "This is description 2"},
-                {title: 'Tittle 3', description: "This is description 3"},
-            ]
-        }
-
-
-
-
-    });
-</script>
+<script src="./dist/app.js"></script>
 
 </body>
 </html>
